@@ -8,12 +8,14 @@ var ground, invisibleGround, groundImage;
 var cloudsGroup, cloudImage;
 var obstaclesGroup, obstacle1, obstacle2, obstacle3, obstacle4, obstacle5, obstacle6;
 
-var score;
+var gameOver, gameOverImage, restart, restartImage
+
+var score = 0;
 
 
 function preload(){
   trex_running = loadAnimation("trex1.png","trex3.png","trex4.png");
-  trex_collided = loadAnimation("trex_collided.png");
+ //animação colidindo
   
   groundImage = loadImage("ground2.png");
   
@@ -48,19 +50,15 @@ function setup() {
   obstaclesGroup = createGroup();
   cloudsGroup = createGroup();
   
-  console.log("Olá" + 5);
-  
-  score = 0;
   //forma do raio colisor   x-offset, y-offset e raio
-  trex.setCollider("circle",0,0,40)
-  
-  trex.debug = true
+   
+  //trex.debug = true
 }
 
 function draw() {
   background(180);
   //exibindo a pontuação
-  text("Pontuação: "+ score, 500,50);
+  
   
   
   
@@ -94,15 +92,11 @@ function draw() {
   }
    else if (gameState === END) {
       ground.velocityX = 0;
-
-      //trex.velocityY = 0
-     // trex.changeAnimation("collided",trex_collided)
-
-      //obstaclesGroup.setLifetimeEach(-1);
+   
       obstaclesGroup.setVelocityXEach(0);
-
       cloudsGroup.setVelocityXEach(0);
-      cloudsGroup.setLifetimeEach(-1);
+     
+     
    }
   
  
